@@ -1,4 +1,11 @@
 @startuml
+
+Evento --> Conferencia
+Evento --> BoardMeeting
+BoardMiembro --> Miembro
+Miembro -- Persona
+
+class Asociaciones{}
 class Miembro{}
 class BoardMiembro{}
 class Evento{}
