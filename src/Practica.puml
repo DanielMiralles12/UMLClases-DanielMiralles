@@ -2,22 +2,41 @@
 Asociacion o-- Evento
 Asociacion o-- Persona
 Asociacion o-- Localizacion
-Evento --> Conferencia
-Evento --> BoardMeeting
-Evento -- Miembro
-Localizacion -- Evento
-BoardMiembro --> Miembro
-Miembro -- Persona
-Conferencia -- Persona
-BoardMiembro -- BoardMeeting
+Evento -- Conferencia
+BoardMeeting --|> Evento
+Evento -- Miembro : asiste a
+Localizacion -- Evento : Se encuentra en
+BoardMiembro --|> Miembro
+Miembro --|> Persona
+Conferencia -- Persona : asiste a
+BoardMiembro -- BoardMeeting : asiste a
 
 
-class Asociacion{}
-class Miembro{}
+class Asociacion{
+newLocation(l : Location) : void
+newEvent(e : Event) : void
+newPerson(p : Person) : void
+informEvent(e : Event) : void
+register(m : Member,e : Event) : void
+}
+class Miembro{
+email : String
+}
 class BoardMiembro{}
-class Evento{}
-class Conferencia{}
-class Localizacion{}
+class Evento{
+fecha : Date
+descripcion : String
+assign(l : Location) : void
+}
+class Conferencia{
+n_maxPersonas : int
+}
+class Localizacion{
+descripcion : String
+direccion: String
+}
 class BoardMeeting{}
-class Persona{}
+class Persona{
+nombre : String
+}
 @enduml
