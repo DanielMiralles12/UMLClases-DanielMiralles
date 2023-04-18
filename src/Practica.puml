@@ -1,11 +1,18 @@
 @startuml
-
+Asociacion o-- Evento
+Asociacion o-- Persona
+Asociacion o-- Localizacion
 Evento --> Conferencia
 Evento --> BoardMeeting
+Evento -- Miembro
+Localizacion -- Evento
 BoardMiembro --> Miembro
 Miembro -- Persona
+Conferencia -- Persona
+BoardMiembro -- BoardMeeting
 
-class Asociaciones{}
+
+class Asociacion{}
 class Miembro{}
 class BoardMiembro{}
 class Evento{}
