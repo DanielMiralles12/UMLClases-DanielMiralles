@@ -1,42 +1,30 @@
 @startuml
-Asociacion o-- Evento
-Asociacion o-- Persona
-Asociacion o-- Localizacion
 Evento -- Conferencia
 BoardMeeting --|> Evento
-Evento -- Miembro : asiste a
-Localizacion -- Evento : Se encuentra en
 BoardMiembro --|> Miembro
 Miembro --|> Persona
-Conferencia -- Persona : asiste a
-BoardMiembro -- BoardMeeting : asiste a
 
+
+Asociacion o-- "0..*" Evento
+Asociacion o-- "0..*" Persona
+BoardMeeting "0..*" -- "0..*" BoardMiembro : Asiste a
+Persona "0..*" -- "0..*" Conferencia : Asiste a
+Evento "0..*" -- "1" Localizacion : Se encuenta en
+Evento "0..*" -- "0..*" Miembro : Asiste a
+Asociacion o-- "0..*" Localizacion
 
 class Asociacion{
-newLocation(l : Location) : void
-newEvent(e : Event) : void
-newPerson(p : Person) : void
-informEvent(e : Event) : void
-register(m : Member,e : Event) : void
 }
 class Miembro{
-email : String
 }
 class BoardMiembro{}
 class Evento{
-fecha : Date
-descripcion : String
-assign(l : Location) : void
 }
 class Conferencia{
-n_maxPersonas : int
 }
 class Localizacion{
-descripcion : String
-direccion: String
 }
 class BoardMeeting{}
 class Persona{
-nombre : String
 }
 @enduml
